@@ -67,7 +67,8 @@ module.exports = grammar({
     _nested_directive: ($) => choice($.conditional, $.loop),
 
     // !Conditionals
-    conditional: ($) => choice($._if, $._unless),
+    conditional: ($) =>
+      choice($._if, $._unless, $._flashMessage, $._error, $._inputError),
     // used in the conditional body rules
     conditional_keyword: ($) =>
       choice(
@@ -89,6 +90,24 @@ module.exports = grammar({
         alias("@unless", $.directive_start),
         $._if_statement_directive_body,
         alias(/@(endunless|end)/, $.directive_end),
+      ),
+    _flashMessage: ($) =>
+      seq(
+        alias("@flashMessage", $.directive_start),
+        $._if_statement_directive_body,
+        alias(/@(endflashMessage|end)/, $.directive_end),
+      ),
+    _error: ($) =>
+      seq(
+        alias("@error", $.directive_start),
+        $._if_statement_directive_body,
+        alias(/@(enderror|end)/, $.directive_end),
+      ),
+    _inputError: ($) =>
+      seq(
+        alias("@inputError", $.directive_start),
+        $._if_statement_directive_body,
+        alias(/@(endinputError|end)/, $.directive_end),
       ),
 
     // !Loops

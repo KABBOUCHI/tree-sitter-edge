@@ -249,6 +249,18 @@
         {
           "type": "SYMBOL",
           "name": "_unless"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_flashMessage"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_error"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_inputError"
         }
       ]
     },
@@ -340,6 +352,87 @@
           "content": {
             "type": "PATTERN",
             "value": "@(endunless|end)"
+          },
+          "named": true,
+          "value": "directive_end"
+        }
+      ]
+    },
+    "_flashMessage": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "@flashMessage"
+          },
+          "named": true,
+          "value": "directive_start"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_if_statement_directive_body"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "@(endflashMessage|end)"
+          },
+          "named": true,
+          "value": "directive_end"
+        }
+      ]
+    },
+    "_error": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "@error"
+          },
+          "named": true,
+          "value": "directive_start"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_if_statement_directive_body"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "@(enderror|end)"
+          },
+          "named": true,
+          "value": "directive_end"
+        }
+      ]
+    },
+    "_inputError": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "@inputError"
+          },
+          "named": true,
+          "value": "directive_start"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_if_statement_directive_body"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "@(endinputError|end)"
           },
           "named": true,
           "value": "directive_end"
