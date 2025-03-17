@@ -54,7 +54,7 @@ module.exports = grammar({
         seq(
           alias(
             choice(
-              /@(include)/,
+              /@(include|let)/,
               /@(method|inject|each|vite|livewire|aware|section|servers|import)/,
             ),
             $.directive,

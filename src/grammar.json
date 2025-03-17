@@ -203,7 +203,7 @@
                 "members": [
                   {
                     "type": "PATTERN",
-                    "value": "@(include)"
+                    "value": "@(include|let)"
                   },
                   {
                     "type": "PATTERN",
